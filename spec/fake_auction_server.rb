@@ -2,7 +2,7 @@ class FakeAuctionServer
   AUCTION_ITEM_JID = 'auction-%s@localhost/Auction'
   AUCTION_PASSWORD = 'auction'
 
-  attr_reader :item_id, :connection, :message_listener, :current_chat
+  attr_reader :item_id, :connection, :message_listener, :current_chat_jid
 
   def initialize(item_id)
     @item_id = item_id
@@ -14,7 +14,7 @@ class FakeAuctionServer
     connection.connect
     connection.auth AUCTION_PASSWORD
     connection.add_message_callback do |message|
-      @current_chat = message.from
+      @current_chat_jid = message.from
       message_listener.process message
     end
   end
@@ -24,7 +24,7 @@ class FakeAuctionServer
   end
 
   def announce_closed
-    connection.send(Jabber::Message.new(current_chat))
+    connection.send(Jabber::Message.new(current_chat_jid))
   end
 
   def stop
