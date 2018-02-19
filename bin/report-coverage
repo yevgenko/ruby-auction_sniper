@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cc-test-reporter before-build
+bundle exec rspec
+cc-test-reporter after-build
