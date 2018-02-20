@@ -35,3 +35,8 @@ sudo ejabberdctl register sniper localhost sniper
 sudo ejabberdctl register auction-item-54321 localhost auction
 sudo ejabberdctl register auction-item-65432 localhost auction
 ```
+
+## Notes
+
+There is no ChatManager concept in xmpp4r, everything is a message,
+using message.from as a jid for the current chat.
