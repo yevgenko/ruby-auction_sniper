@@ -31,8 +31,14 @@ module AuctionSniper
         # Return async Rack response
         event_source.rack_response
       else
-        [200, {"Content-Type" => "text/html"}, File.open('./resources/index.html', File::RDONLY)]
+        user_interface_response
       end
+    end
+
+    private
+
+    def user_interface_response
+      [200, {"Content-Type" => "text/html"}, File.open('./resources/index.html', File::RDONLY)]
     end
   end
 end
