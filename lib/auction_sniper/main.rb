@@ -14,7 +14,7 @@ module AuctionSniper
       )
       connection.add_message_callback do |message|
         @current_status = STATUS_LOST
-        event_source.send current_status if event_source
+        event_source.send current_status
       end
     end
 
